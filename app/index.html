@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      td,
+      th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      style="padding: 20px; height: 100%; width: 100%; box-sizing: border-box"
+    >
+      <table style="height: 100%; width: 100%">
+        <tr>
+          <th style="width: 300px; border: 0">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/vehicheck-id.appspot.com/o/VEHICHECK%20(1).png?alt=media&token=4900c0b7-dce4-44af-bffa-48f69da8e945"
+              height="150px"
+              width="320px"
+            />
+          </th>
+          <th
+            style="
+              align-items: flex-end;
+              justify-content: end;
+              text-align: center;
+              border: 0;
+              font-size: 30px;
+              font-weight: 900;
+            "
+          >
+            Laporan Inspeksi
+          </th>
+          <th style="width: 300px; border: 0"></th>
+        </tr>
+      </table>
+      {{#each inspection}}
+      <h4>type: {{this.vehicle.type}}</h4>
+      <h4>brand: {{this.vehicle.brand}}</h4>
+      <h4>model: {{this.vehicle.model}}</h4>
+      <h4>transmission: {{this.vehicle.transmission}}</h4>
+      {{/each}}
+      <div>
+        {{#each inspection}}
+        <h2>Exterior</h2>
+        <table style="height: 100%; width: 100%">
+          <tr>
+            <th>kerusakan</th>
+            <th>Status</th>
+          </tr>
+          {{#each this.exterior}}
+          <tr>
+            {{#ifCond @key '!==' 'photo'}}
+            <td>{{this.title}}</td>
+            <td>{{#if this.status}}{{this.status}}{{else}}N/A{{/if}}</td>
+            {{/ifCond}}
+          </tr>
+          {{/each}}
+        </table>
+        <h2>kerusakan</h2>
+        {{#each this.exterior.photo}}
+        <img src="{{this}}" style="height: 300px; width: 200px" />
+        {{/each}} {{/each}} {{#each inspection}}
+        <h2>Interior</h2>
+        <table style="height: 100%; width: 100%">
+          <tr>
+            <th>kerusakan</th>
+            <th>Status</th>
+          </tr>
+          {{#each this.interior}}
+          <tr>
+            {{#ifCond @key '!==' 'photo'}}
+            <td>{{this.title}}</td>
+            <td>{{#if this.status}}{{this.status}}{{else}}N/A{{/if}}</td>
+            {{/ifCond}}
+          </tr>
+          {{/each}}
+        </table>
+        <h2>kerusakan</h2>
+        {{#each this.interior.photo}}
+        <img src="{{this}}" style="height: 300px; width: 200px" />
+        {{/each}} {{/each}} {{#each inspection}}
+        <h2>Components</h2>
+        <table style="height: 100%; width: 100%">
+          <tr>
+            <th>kerusakan</th>
+            <th>Status</th>
+          </tr>
+          {{#each this.components}}
+          <tr>
+            {{#ifCond @key '!==' 'photo'}}
+            <td>{{this.title}}</td>
+            <td>{{#if this.status}}{{this.status}}{{else}}N/A{{/if}}</td>
+            {{/ifCond}}
+          </tr>
+          {{/each}}
+        </table>
+        <h2>kerusakan</h2>
+        {{#each this.components.photo}}
+        <img src="{{this}}" style="height: 300px; width: 200px" />
+        {{/each}} {{/each}} {{#each inspection}}
+        <h2>Driven Test</h2>
+        <table style="height: 100%; width: 100%">
+          <tr>
+            <th>kerusakan</th>
+            <th>Status</th>
+          </tr>
+          {{#each this.tesJalan}}
+          <tr>
+            {{#ifCond @key '!==' 'photo'}}
+            <td>{{this.title}}</td>
+            <td>{{#if this.status}}{{this.status}}{{else}}N/A{{/if}}</td>
+            {{/ifCond}}
+          </tr>
+          {{/each}}
+        </table>
+        <h2>kerusakan</h2>
+        {{#each this.tesJalan.photo}}
+        <img src="{{this}}" style="height: 300px; width: 200px" />
+        {{/each}} {{/each}}
+      </div>
+    </div>
+  </body>
+</html>
